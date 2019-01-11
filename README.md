@@ -43,6 +43,7 @@ Get restaurant suggestions
   - route: GET /restaurants/:id/suggestions
   - input: path param 'id'
   - output: array of objects with the following structure:
+  ```
       { 
         id (num),
         name (string),
@@ -58,7 +59,7 @@ Get restaurant suggestions
         review (string),
         picture (url string),
       }
-
+ ```
 Add a new restaurant
   - route: POST /restaurants
   - input: obj with restaurant info in above structure
