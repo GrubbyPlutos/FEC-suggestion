@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/GrubbyPlutos/SDC-profile
+  - https://github.com/GrubbyPlutos/SDC-profile
+  - https://github.com/GrubbyPlutos/SDC-profile
+  - https://github.com/GrubbyPlutos/SDC-profile
 
 ## Table of Contents
 
@@ -63,11 +63,6 @@ Get restaurant suggestions
 Add a new restaurant
   - route: POST /restaurants
   - input: obj with restaurant info in above structure
-  - output: none
-  
-Add/Update suggestions to/of a restaurant
-  - route: PUT /restaurants/:id/suggestions
-  - input: path param 'id' and id(s) of suggestion(s)
   - output: none
   
 Update restaurant info
