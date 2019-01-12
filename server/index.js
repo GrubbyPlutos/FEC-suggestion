@@ -23,4 +23,23 @@ app.get('/restaurants/:id/suggestions', (req, res) => {
   });
 });
 
+app.post('/restaurants', (req, res) => {
+  // insert new restaurant to database
+  // Input: identifying info of restaurant in obj format
+  // Output: none
+});
+
+
+app.put('/restaurants/:id', (req, res) => {
+  // update some data about the restaurant
+  // Input: id of restaurant and info to update (in obj format)
+  // Output: none
+});
+
+app.delete('/restaurants/:id', (req, res) => {
+  // delete a restaurant entry from the database
+  // Input: id of restaurant
+  // Output: none
+});
+
 app.listen(PORT, () => { console.log(`listening on port ${PORT}`); });
