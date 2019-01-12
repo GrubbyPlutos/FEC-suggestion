@@ -1,5 +1,3 @@
-DROP DATABASE IF EXISTS suggestions;
-
 CREATE DATABASE suggestions;
 
 \c suggestions;
