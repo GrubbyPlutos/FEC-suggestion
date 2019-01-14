@@ -1,5 +1,3 @@
-DROP DATABASE IF EXISTS suggestions;
-
 CREATE DATABASE suggestions;
 
 \c suggestions;
@@ -8,7 +6,6 @@ CREATE TABLE restaurants(
     id INT PRIMARY KEY,
     accuracy INT NOT NULL,
     food VARCHAR(200) NOT NULL,
-    location VARCHAR(200) NOT NULL,
     name VARCHAR(50) NOT NULL,
     picture VARCHAR(100) NOT NULL,
     price INT NOT NULL,
@@ -19,4 +16,9 @@ CREATE TABLE restaurants(
     timeliness INT NOT NULL,
     username VARCHAR(100) NOT NULL,
     wait_time INT NOT NULL
+);
+
+CREATE TABLE suggested(
+    id INT,
+    related_id INT REFERENCES restaurants(id)
 );
