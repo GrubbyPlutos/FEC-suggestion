@@ -45,19 +45,20 @@ Get restaurant suggestions
   - output: array of objects with the following structure:
   ```
       { 
-        id (num),
-        name (string),
-        food (string),
-        maxWaitTime (num),
-        priceRange (num),
-        reviewNo (num),
-        stars (num),
-        good (num),
-        onTime (num),
-        accurate (num),
-        reviewUsername (string),
-        review (string),
-        picture (url string),
+        id int,
+        accuracy int,
+        food text,
+        name text,
+        picture text,
+        price int,
+        quality int,
+        review_text text,
+        reviews int,
+        stars int,
+        suggested set<int>,
+        timeliness int,
+        username text,
+        wait_time int);
       }
  ```
 Add a new restaurant
