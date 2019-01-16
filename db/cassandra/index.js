@@ -9,4 +9,4 @@ client.execute('SELECT * FROM suggestions.restaurants WHERE id=3', (err, result)
     console.log(result);
   }
   process.exit();
-})
+});
