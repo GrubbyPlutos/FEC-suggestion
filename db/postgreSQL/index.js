@@ -6,7 +6,7 @@ const client = new pg.Client(connectionString);
 client.connect();
 
 const insert = () => {
-  const query = client.query(`COPY restaurants FROM '/Users/jessicahodson/hack-reactor/SDC/FEC-suggestion/suggestions1.csv' DELIMITER ',' CSV HEADER;`, (err) => {
+  const query = client.query(`COPY restaurants FROM '/Users/jessicahodson/hack-reactor/SDC/SDC-suggestion/suggestions1.csv' DELIMITER ',' CSV HEADER;`, (err) => {
     if (err) {
       console.log(err);
     }
