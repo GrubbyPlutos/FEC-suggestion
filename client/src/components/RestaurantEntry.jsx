@@ -24,13 +24,13 @@ const RestaurantEntry = (props) => {
             <div style={styles.lowerRow}>
               <div>
                 <span>
-                  <div className="waitingTime" style={{ color: 'black', margin: '2px 0' }}>{props.restaurant.waitingTime}-{props.restaurant.waitingTime + 10} mins</div>
-                  <div className="minOrder">${props.restaurant.minimum} min</div>
+                  <div className="waitingTime" style={{ color: 'black', margin: '2px 0' }}>{props.restaurant.wait_time}-{props.restaurant.wait_time + 10} mins</div>
+                  <div className="minOrder">${props.restaurant.price} min</div>
                 </span>
               </div>
               <div onMouseEnter={(e) => props.hoverIn(props.restaurant.id, e)}>
-                <Stars stars={props.restaurant.reviewSummary.stars}/>
-                <div className="reviewNos">{props.restaurant.reviewNo} ratings</div>
+                <Stars stars={props.restaurant.stars}/>
+                <div className="reviewNos">{props.restaurant.reviews} ratings</div>
               </div>
             </div>
           </div>
