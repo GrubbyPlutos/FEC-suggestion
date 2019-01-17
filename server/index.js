@@ -8,11 +8,7 @@ const PORT = 3003;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../client/dist')));
-
-app.get('/restaurants/:id', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, '../client/dist/index.html'));
-});
+app.use('/restaurants/:id', express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/restaurants/:id/suggestions', db.getAllSuggestions);
 
