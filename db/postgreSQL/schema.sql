@@ -21,3 +21,7 @@ CREATE TABLE restaurants(
     username VARCHAR(100) NOT NULL,
     wait_time INT NOT NULL
 );
+
+COPY restaurants FROM '/Users/jessicahodson/hack-reactor/SDC/SDC-suggestion/suggestions1.csv' DELIMITER ',' CSV HEADER;
+
+CREATE INDEX location_foodtype on restaurants (location, food_type);
