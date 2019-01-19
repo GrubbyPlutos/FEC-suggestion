@@ -3,7 +3,7 @@ CREATE DATABASE suggestions;
 \c suggestions;
 
 CREATE TABLE restaurants(
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     accuracy INT NOT NULL,
     food VARCHAR(200) NOT NULL,
     food_type VARCHAR(200) NOT NULL,
