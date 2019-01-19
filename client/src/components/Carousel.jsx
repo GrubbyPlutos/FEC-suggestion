@@ -16,7 +16,7 @@ const Carousel = (props) =>  {
       <div className="carouselBody" ref={props.scroll} onScroll={props.scrolling}>
         {props.restaurants.map((restaurant, index) => {
           return (
-            <RestaurantEntry restaurant={restaurant} active={props.active} index={index % 3}
+            <RestaurantEntry key={restaurant.id} restaurant={restaurant} active={props.active} index={index % 3}
             hoverIn={props.hoverIn} hoverOut={props.hoverOut} hover={props.hover}/>
           );
         })}

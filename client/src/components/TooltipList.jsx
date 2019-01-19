@@ -7,7 +7,7 @@ const TooltipList = (props) => {
     <div>
     {props.restaurants.map((restaurant, index) => {
       return (
-        <Tooltip restaurant={restaurant} hover={props.hover} 
+        <Tooltip key={restaurant.id} restaurant={restaurant} hover={props.hover} 
         id={restaurant.id} position={props.position}/>
       )
     })}
