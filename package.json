@@ -22,6 +22,7 @@
     "csv-write-stream": "^2.0.0",
     "express": "^4.16.4",
     "mongoose": "^5.4.2",
+    "newrelic": "^5.0.0",
     "pg": "^6.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
