@@ -1,3 +1,11 @@
+const redis = require('redis');
+
+const client = redis.createClient();
+
+client.on("error", function (err) {
+  console.log("Error " + err);
+});
+
 const pg = require('./index.js');
 
 module.exports.addNewRestaurant = (req, res) => {
@@ -11,9 +19,22 @@ module.exports.addNewRestaurant = (req, res) => {
 module.exports.getAllSuggestions = (req, res) => {
   return pg.pool.query(`SELECT * FROM restaurants WHERE location=(SELECT location FROM restaurants WHERE id=${req.params.id}) AND food_type=(SELECT food_type FROM restaurants WHERE id=${req.params.id}) limit 12`)
     .then((suggestions) => {
+      client.setex(req.params.id, 3600, JSON.stringify(suggestions.rows));
       res.send(suggestions.rows);
     })
     .catch(err => res.send(`Could not get suggestions for restaurant id: ${req.params.id} (${err})`));
+};
+
+module.exports.getCachedSuggestions = (req, res) => {
+  return client.get(req.params.id, (err, result) => {
+    if (result) {
+      res.send(result);
+    } else if (err) {
+      res.send(`Could not get suggestions for restaurant id: ${req.params.id} (${err})`)
+    } else {
+      module.exports.getAllSuggestions(req, res);
+    }
+  });
 };
 
 module.exports.updateRestaurant = (req, res) => {

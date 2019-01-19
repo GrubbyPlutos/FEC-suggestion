@@ -26,7 +26,8 @@
     "pg": "^6.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-media": "^1.9.2"
+    "react-media": "^1.9.2",
+    "redis": "^2.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
