@@ -4,7 +4,7 @@ const data = require('./dataGenerator.js');
 const csvWriter = () => {
   const stream = fs.createWriteStream('suggestions1.csv');
   let i = 1;
-  const max = 10000002;
+  const max = 10000001;
 
   stream.write('id,name,food,food_type,location,wait_time,price,reviews,stars,quality,timeliness,accuracy,username,review_text,picture\n');
 

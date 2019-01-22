@@ -22,7 +22,7 @@ class Suggestions extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/restaurants/${this.props.id}suggestions`)
+    axios.get(`http://13.57.218.68:80/restaurants/${this.props.id}suggestions`)
       .then((response) => {
         this.setState({
           restaurants: response.data,
