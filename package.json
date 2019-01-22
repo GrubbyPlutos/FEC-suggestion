@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
+    "build": "webpack -p",
     "seed": "node db/seeding.js",
     "test": "jest",
     "docker": "node db/seeding.js && node server/index.js"
