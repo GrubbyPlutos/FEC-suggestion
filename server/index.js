@@ -7,7 +7,7 @@ const db = require('../db/postgreSQL/controllers.js');
 
 
 const app = express();
-const PORT = 3003;
+const PORT = 80;
 
 app.use(cors());
 app.use(bodyParser.json());

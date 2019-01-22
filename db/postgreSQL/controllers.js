@@ -27,12 +27,12 @@ module.exports.getAllSuggestions = (req, res) => {
 
 module.exports.getCachedSuggestions = (req, res) => {
   return client.get(req.params.id, (err, result) => {
-    if (result) {
-      res.send(result);
+    if (!result) {
+      module.exports.getAllSuggestions(req, res);
     } else if (err) {
       res.send(`Could not get suggestions for restaurant id: ${req.params.id} (${err})`)
     } else {
-      module.exports.getAllSuggestions(req, res);
+      res.send(result);
     }
   });
 };
