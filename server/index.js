@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/restaurants/:id', express.static(path.join(__dirname, '../client/dist')));
 
-app.use('/loaderio-c8b2d33dfaa21dd1200bcd809ca0d4bc', express.static(path.join(__dirname, '../loaderio-c8b2d33dfaa21dd1200bcd809ca0d4bc.txt')));
+app.use('/loaderio-c8b2d33dfaa21dd1200bcd809ca0d4bc/', express.static(path.join(__dirname, '../loaderio-c8b2d33dfaa21dd1200bcd809ca0d4bc.txt')));
 
 app.get('/restaurants/:id/suggestions', db.getCachedSuggestions);
 
