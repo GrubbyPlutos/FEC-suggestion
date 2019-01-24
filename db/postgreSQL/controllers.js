@@ -1,6 +1,6 @@
 const redis = require('redis');
 
-const client = redis.createClient(6379, '52.53.161.6');
+const client = redis.createClient(6379, '52.53.196.169');
 
 client.on("error", function (err) {
   console.log("Error " + err);
@@ -17,7 +17,7 @@ module.exports.addNewRestaurant = (req, res) => {
 };
 
 module.exports.getAllSuggestions = (req, res) => {
-  return pg.pool.query(`SELECT * FROM restaurants WHERE location=(SELECT location FROM restaurants WHERE id=${req.params.id}) AND food_type=(SELECT food_type FROM restaurants WHERE id=${req.params.id}) OFFSET floor(random()*100) limit 12`)
+  return pg.pool.query(`SELECT * FROM restaurants WHERE location=(SELECT location FROM restaurants WHERE id=${req.params.id}) AND food_type=(SELECT food_type FROM restaurants WHERE id=${req.params.id}) limit 12`)
     .then((suggestions) => {
       client.setex(req.params.id, 3600, JSON.stringify(suggestions.rows));
       res.send(suggestions.rows);
