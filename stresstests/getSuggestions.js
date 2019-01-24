@@ -14,5 +14,5 @@ export default function () {
   }
 
   // otherwise request suggestions for the same id (representing cached data)
-  http.get(`http://localhost:3003/restaurants/${id}/suggestions`);
-};
+  http.get(`http://13.57.218.68:3003/restaurants/${id}/suggestions`);
+}
