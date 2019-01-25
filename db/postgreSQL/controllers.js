@@ -1,6 +1,7 @@
 const redis = require('redis');
 
-const client = redis.createClient(6379, '52.53.196.169');
+const client = redis.createClient(6379, '54.193.62.166');
+client.auth('pineapple');
 
 client.on("error", function (err) {
   console.log("Error " + err);
@@ -16,8 +17,17 @@ module.exports.addNewRestaurant = (req, res) => {
     .catch(err => res.send(`Could not add new restaurant because ${err}`));
 };
 
-module.exports.getAllSuggestions = (req, res) => {
+module.exports.getAllSuggestions1 = (req, res) => {
   return pg.pool.query(`SELECT * FROM restaurants WHERE location=(SELECT location FROM restaurants WHERE id=${req.params.id}) AND food_type=(SELECT food_type FROM restaurants WHERE id=${req.params.id}) limit 12`)
+    .then((suggestions) => {
+      client.setex(req.params.id, 3600, JSON.stringify(suggestions.rows));
+      res.send(suggestions.rows);
+    })
+    .catch(err => res.send(`Could not get suggestions for restaurant id: ${req.params.id} (${err})`));
+};
+
+module.exports.getAllSuggestions2 = (req, res) => {
+  return pg.pool2.query(`SELECT * FROM restaurants WHERE location=(SELECT location FROM restaurants WHERE id=${req.params.id}) AND food_type=(SELECT food_type FROM restaurants WHERE id=${req.params.id}) limit 12`)
     .then((suggestions) => {
       client.setex(req.params.id, 3600, JSON.stringify(suggestions.rows));
       res.send(suggestions.rows);
@@ -28,7 +38,11 @@ module.exports.getAllSuggestions = (req, res) => {
 module.exports.getCachedSuggestions = (req, res) => {
   return client.get(req.params.id, (err, result) => {
     if (!result) {
-      module.exports.getAllSuggestions(req, res);
+      if (req.body.id > 8000000) {
+        module.exports.getAllSuggestions1(req, res);
+      } else {
+        module.exports.getAllSuggestions1(req, res);
+      }
     } else if (err) {
       res.send(`Could not get suggestions for restaurant id: ${req.params.id} (${err})`)
     } else {
